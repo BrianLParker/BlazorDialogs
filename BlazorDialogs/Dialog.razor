@@ -1,0 +1,8 @@
+﻿<CascadingValue Value=@this IsFixed=true >
+    <dialog @ref="@dialogElement" @attributes=@CapturedAttributes >
+    @if(IsDialogVisible)
+    {
+        @ChildContent
+    }
+    </dialog>
+</CascadingValue>

@@ -1,0 +1,10 @@
+﻿<button @attributes=CapturedAttributes @onclick=@CloseDialog>
+    @if (ChildContent is null)
+    {
+        <div>×</div>
+    }
+    else
+    {
+        @ChildContent
+    }
+</button>
