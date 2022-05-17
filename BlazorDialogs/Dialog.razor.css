@@ -1,0 +1,27 @@
+﻿.bd-no-border {
+    border: none;
+}
+
+.bd-back-blur3 {
+    backdrop-filter: blur(3px);
+}
+
+.bd-back-blur5 {
+    backdrop-filter: blur(5px);
+}
+
+.bd-back-blur10 {
+    backdrop-filter: blur(10px);
+}
+
+dialog.bd-backdrop-blur3::backdrop {
+    backdrop-filter: blur(3px);
+}
+
+dialog.bd-backdrop-blur5::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+dialog.bd-backdrop-blur10::backdrop {
+    backdrop-filter: blur(10px);
+}

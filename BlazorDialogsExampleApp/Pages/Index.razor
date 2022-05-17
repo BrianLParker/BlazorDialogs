@@ -1,0 +1,133 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+<div class="h-100">
+    <h1>Hello, world!</h1>
+
+    Welcome to your new app.
+
+    <button @onclick=@ShowDialogAsync class="btn btn-outline-primary">
+        Start the dialog tour.
+    </button>
+
+    <Dialog @ref=@dialog1 DialogClosed=@Dialog1ClosedAsync>
+        <div>
+            Welcome to the dialog tour.
+            <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+        </div>
+    </Dialog>
+
+
+    <Dialog @ref=@dialog2 DialogClosed=@Dialog2ClosedAsync>
+        <div class="d-flex flex-column">
+            <div class="mb-3">
+                <p>
+                    Dialog uses no css. You get your browsers default.
+                </p>
+            </div>
+            <code>&lt;Dialog&gt;content&lt/Dialog&gt</code>
+            <div class="mt-3">
+                <p>
+                    So I added few helpful classes that can be used in combination with whatever css stack your using.
+                </p>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+            </div>
+        </div>
+    </Dialog>
+
+    <Dialog @ref=@dialog3 DialogClosed=@Dialog3ClosedAsync class="bd-no-border">
+        <div class="d-flex flex-column gap-3">
+            <div>
+                Use the <code>bd-no-border</code> class to remove the border.
+            </div>
+            <code>&lt;Dialog class="bd-no-border" &gt;content&lt/Dialog&gt</code>
+            <div class="d-flex flex-row justify-content-end">
+                <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+            </div>
+        </div>
+    </Dialog>
+
+    <Dialog @ref=@dialog4 class="bd-back-blur5 bg-transparent" DialogClosed=@Dialog4ClosedAsync>
+        <div class="d-flex flex-column gap-3">
+            <div>
+                Use the <code>bd-back-blur5</code> class blur the background of the dialog by 5 pixels.
+            </div>
+            <code>&lt;Dialog class="bd-back-blur5 bg-transparent" &gt;content&lt/Dialog&gt</code>
+            <div>
+                <p>Available options:</p>
+                <ul>
+                    <li>
+                        <code>bd-back-blur3</code>
+                    </li>
+                    <li>
+                        <code>bd-back-blur5</code>
+                    </li>
+                    <li>
+                        <code>bd-back-blur10</code>
+                    </li>
+                </ul>
+                <p>Note: <code>bg-transparent</code> provided by the clients css stack. (Bootstrap 5)</p>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+            </div>
+        </div>
+    </Dialog>
+    <Dialog @ref=@dialog5 class="bd-backdrop-blur5 ">
+        <div class="d-flex flex-column gap-3">
+            <div>
+                Use the <code>bd-backdrop-blur5</code> class blur the background of the dialog by 5 pixels.
+            </div>
+            <code>&lt;Dialog class="bd-backdrop-blur5" &gt;content&lt/Dialog&gt</code>
+            <div>
+                <p>Available options:</p>
+                <ul>
+                    <li>
+                        <code>bd-backdrop-blur3</code>
+                    </li>
+                    <li>
+                        <code>bd-backdrop-blur5</code>
+                    </li>
+                    <li>
+                        <code>bd-backdrop-blur10</code>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+            </div>
+        </div>
+    </Dialog>
+</div>
+
+@code {
+    private Dialog dialog1;
+    private Dialog dialog2;
+    private Dialog dialog3;
+    private Dialog dialog4;
+    private Dialog dialog5;
+
+    async Task ShowDialogAsync()
+    {
+        await dialog1.ShowDialogAsync();
+    }
+
+    async Task Dialog1ClosedAsync()
+    {
+        await dialog2.ShowDialogAsync();
+    }
+    async Task Dialog2ClosedAsync()
+    {
+        await dialog3.ShowDialogAsync();
+    }
+    async Task Dialog3ClosedAsync()
+    {
+        await dialog4.ShowDialogAsync();
+    }
+    async Task Dialog4ClosedAsync()
+    {
+        await dialog5.ShowDialogAsync();
+    }
+}
