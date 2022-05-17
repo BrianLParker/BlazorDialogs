@@ -130,4 +130,14 @@
     {
         await dialog5.ShowDialogAsync();
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender is true)
+        {
+            await dialog1.ShowDialogAsync();
+            StateHasChanged();
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
 }
