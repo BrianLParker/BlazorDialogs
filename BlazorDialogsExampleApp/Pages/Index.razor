@@ -10,13 +10,18 @@
         Start the dialog tour.
     </button>
 
-    <Dialog @ref=@dialog1 DialogClosed=@Dialog1ClosedAsync>
-        <div>
-            Welcome to the dialog tour.
-            <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+    <Dialog @ref=@dialog1
+            DialogClosed=@Dialog1ClosedAsync
+            class="bd-back-blur3 bg-black bg-opacity-10 bd-no-border rounded"
+            style="box-shadow: 0 0 15px #0077ff77,inset 0 0 15px #ffffff77;">
+        <div class="text-white">
+            <h3>Welcome to the dialog tour</h3>
+            <div class="d-flex flex-row justify-content-center">
+
+            <DialogCloseButton class="btn btn-primary btn-sm">Start</DialogCloseButton>
+            </div>
         </div>
     </Dialog>
-
 
     <Dialog @ref=@dialog2 DialogClosed=@Dialog2ClosedAsync>
         <div class="d-flex flex-column">
@@ -75,10 +80,11 @@
             </div>
         </div>
     </Dialog>
+
     <Dialog @ref=@dialog5 class="bd-backdrop-blur5 ">
         <div class="d-flex flex-column gap-3">
             <div>
-                Use the <code>bd-backdrop-blur5</code> class blur the background of the dialog by 5 pixels.
+                Use the <code>bd-backdrop-blur5</code> class blur the backdrop of the dialog by 5 pixels.
             </div>
             <code>&lt;Dialog class="bd-backdrop-blur5" &gt;content&lt/Dialog&gt</code>
             <div>
@@ -133,7 +139,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(firstRender is true)
+        if (firstRender is true)
         {
             await dialog1.ShowDialogAsync();
             StateHasChanged();
