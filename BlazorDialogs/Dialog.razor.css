@@ -4,24 +4,66 @@
 
 .bd-back-blur3 {
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .bd-back-blur5 {
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .bd-back-blur10 {
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 dialog.bd-backdrop-blur3::backdrop {
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 dialog.bd-backdrop-blur5::backdrop {
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 dialog.bd-backdrop-blur10::backdrop {
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.bd-fade-in {
+    opacity: 1;
+    animation-name: fade-in;
+    animation-duration: .35s;
+    animation-timing-function: ease-in;
+}
+
+
+.bd-slide-down {
+    position: relative;
+    top: 0px;
+    animation-name: slide-down;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        top: calc(100vh * -1);
+    }
+
+    to {
+        top: 0px;
+    }
 }

@@ -21,7 +21,7 @@ public partial class DialogCloseButton : ComponentBase
     public Dictionary<string, object> CapturedAttributes { get; set; } =
         new Dictionary<string, object>
         {
-            { "class", "m-0 b-0 border-0 bg-transparent text-white" }
+            { "style", "margin: 0; border: none; background-color: transparent; color: white;" }
         };
 
     private async Task CloseDialog() => await Dialog.CloseDialogAsync();
