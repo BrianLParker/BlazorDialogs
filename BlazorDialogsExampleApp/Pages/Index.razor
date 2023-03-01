@@ -80,7 +80,7 @@
         </div>
     </Dialog>
 
-    <Dialog @ref=@dialog5 class="bd-backdrop-blur5 ">
+    <Dialog @ref=@dialog5 class="bd-backdrop-blur5" DialogClosed=Dialog5ClosedAsync >
         <div class="d-flex flex-column gap-3">
             <div>
                 Use the <code>bd-backdrop-blur5</code> class blur the backdrop of the dialog by 5 pixels.
@@ -106,44 +106,63 @@
             </div>
         </div>
     </Dialog>
+
+    <Dialog @ref=@sidebarLeft class="bd-sidebar bd-sidebar-left" DialogClosed="SideBarLeftClosedAsync">
+        <h1>Side Bar</h1>        
+        <code>@($"<Dialog class=\"bd-sidebar bd-sidebar-left\">")</code>
+        <div class="d-flex flex-row justify-content-end">
+            <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+        </div>
+    </Dialog>
+
+    <Dialog @ref=@sidebarRight class="bd-sidebar bd-sidebar-right">
+        <h1>Side Bar</h1>
+        <code>@($"<Dialog class=\"bd-sidebar bd-sidebar-right\">")</code>
+        <div class="d-flex flex-row justify-content-end">
+            <DialogCloseButton class="btn btn-outline-primary btn-sm">Next</DialogCloseButton>
+        </div>
+    </Dialog>
 </div>
 
 @code {
-    private Dialog dialog1;
-    private Dialog dialog2;
-    private Dialog dialog3;
-    private Dialog dialog4;
-    private Dialog dialog5;
+    private Dialog? dialog1;
+    private Dialog? dialog2;
+    private Dialog? dialog3;
+    private Dialog? dialog4;
+    private Dialog? dialog5;
+    private Dialog? sidebarLeft;
+    private Dialog? sidebarRight;
+
 
     async Task ShowDialogAsync()
     {
-        await dialog1.ShowDialogAsync();
+        await dialog1!.ShowDialogAsync();
     }
 
     async Task Dialog1ClosedAsync()
     {
-        await dialog2.ShowDialogAsync();
+        await dialog2!.ShowDialogAsync();
     }
     async Task Dialog2ClosedAsync()
     {
-        await dialog3.ShowDialogAsync();
+        await dialog3!.ShowDialogAsync();
     }
     async Task Dialog3ClosedAsync()
     {
-        await dialog4.ShowDialogAsync();
-    }
-    async Task Dialog4ClosedAsync()
-    {
-        await dialog5.ShowDialogAsync();
+        await dialog4!.ShowDialogAsync();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    async Task Dialog4ClosedAsync()
     {
-        if (firstRender is true)
-        {
-            await dialog1.ShowDialogAsync();
-            StateHasChanged();
-        }
-        await base.OnAfterRenderAsync(firstRender);
+        await dialog5!.ShowDialogAsync();
+    }
+
+    async Task Dialog5ClosedAsync()
+    {
+        await sidebarLeft!.ShowDialogAsync();
+    }
+    async Task SideBarLeftClosedAsync()
+    {
+        await sidebarRight!.ShowDialogAsync();
     }
 }

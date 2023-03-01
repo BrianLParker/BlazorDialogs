@@ -1,4 +1,19 @@
-﻿.bd-no-border {
+﻿dialog.bd-sidebar {
+	min-height: 100vh;
+	max-height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+	dialog.bd-sidebar.bd-sidebar-left {
+		margin-left: 0;
+		margin-right: auto;
+	}
+	dialog.bd-sidebar.bd-sidebar-right {
+		margin-left: auto;
+		margin-right: 0;
+	}
+
+.bd-no-border {
     border: none;
 }
 
@@ -38,7 +53,6 @@ dialog.bd-backdrop-blur10::backdrop {
     animation-duration: .35s;
     animation-timing-function: ease-in;
 }
-
 
 .bd-slide-down {
     position: relative;

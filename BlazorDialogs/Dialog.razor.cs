@@ -19,7 +19,7 @@ public partial class Dialog : ComponentBase, IAsyncDisposable
     {
         moduleTask = new(() => jsRuntime!.InvokeAsync<IJSObjectReference>(
             identifier: "import",
-            args: "./_content/BlazorDialogs/dialogJsInterop.js")
+            args: "./_content/BlazorDialogs/scripts/dialogJsInterop.min.js")
         .AsTask());
 
         dotNetObjectReference = DotNetObjectReference.Create(this);
@@ -41,9 +41,20 @@ public partial class Dialog : ComponentBase, IAsyncDisposable
 
     public async ValueTask ShowDialogAsync()
     {
-        var module = await moduleTask.Value;
-        await module.InvokeVoidAsync(identifier: "showDialog", dialogElement, dotNetObjectReference);
+        IJSObjectReference jsModule = await moduleTask.Value;
+
+        await jsModule.InvokeVoidAsync(identifier: "showDialog", dialogElement);
+
         this.IsDialogVisible = true;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync(identifier: "addCloseEventListener", dialogElement, dotNetObjectReference);
+        }
     }
 
     public async ValueTask CloseDialogAsync()

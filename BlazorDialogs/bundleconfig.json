@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "wwwroot/dialogJsInterop.min.js",
+    "inputFiles": [
+      "wwwroot/dialogJsInterop.js"
+    ]
+  }
+]

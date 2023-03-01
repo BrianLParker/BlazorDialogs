@@ -3,15 +3,18 @@
 // Licensed under the MIT License.
 // ------------------------------------------------------------
 
-export function showDialog(element, parm) {   
-    let dialog = element;
-    let dotNetHelper = parm;
+export function addCloseEventListener(dialog, dotNetHelper) {
+
     dialog.addEventListener('close', () => {
         dotNetHelper.invokeMethodAsync('OnDialogClosed');
     });
-    return element.showModal();
+
 }
 
-export function closeDialog(element, parm) {
-    return element.close();
+export function showDialog(dialog) {
+    return dialog.showModal();
+}
+
+export function closeDialog(dialog) {
+    return dialog.close();
 }
